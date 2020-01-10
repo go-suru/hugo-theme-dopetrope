@@ -4,7 +4,15 @@
         <!-- Copyright -->
             <div id="copyright">
                 <ul class="links">
-                    <li>&copy; {{ .Site.Title }}. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li><li>Hugo Port: <a href="https://curtistimson.co.uk">curttimson</a></li>
+                  <li>
+                    {{ with .Site.Copyright }}
+                      {{ . }}
+                      {{ else }} &copy;
+                      {{ with .Site.Author }}
+                        <a href="{{ .homepage }}">{{ .name }}</a>
+                        {{ else }} {{ .Site.Title }}
+                      {{ end }} {{ now.Format "2006" }}.  All rights reserved.
+                    {{ end }}</li><li>Hugo theme: <a href="https://github.com/curtistimson/hugo-theme-dopetrope">Dopetrope</a></li>
                 </ul>
             </div>
 
