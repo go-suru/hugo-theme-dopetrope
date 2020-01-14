@@ -14,24 +14,25 @@
 		<!-- Main -->
 		<div id="main-wrapper">
 			<div class="container">
-				{{ if and (or (eq .Site.Data.sidebar.content.position "left") (eq .Site.Data.sidebar.content.position "right")) (not (eq .Params.hidesidebar true)) }}
+				{{ if not ( isset (index .Site.Params .Section) "sidebar" ) }}
+				{{ partial "post/content.html" . }}
+				{{ else }}
 				<div class="row">
-					{{ if eq .Site.Data.sidebar.content.position "left" }}
+					{{ if eq (index .Site.Params .Section "sidebar") "left" }}
 					<div class="4u 12u(mobile)">
 						{{ partial "post/sidebar" . }}
 					</div>
 					{{ end }}
 					<div class="8u 12u(mobile)">
+
 						{{ partial "post/content.html" . }}
 					</div>
-					{{ if eq .Site.Data.sidebar.content.position "right" }}
+					{{ if eq (index .Site.Params .Section "sidebar") "right" }}
 					<div class="4u 12u(mobile)">
 						{{ partial "post/sidebar" . }}
 					</div>
 					{{ end }}
 				</div>
-				{{ else }}
-				{{ partial "post/content.html" . }}
 				{{ end }}
 			</div>
 		</div>
