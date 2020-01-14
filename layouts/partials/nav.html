@@ -2,10 +2,10 @@
 <nav id="nav">
     <ul>
         <li class="current"><a href="{{ .Site.BaseURL }}">Home</a></li>
-        {{ $portfolioItems := where .Site.Pages "Type" .Site.Params.Portfolio.foldername }}
-		{{ if $portfolioItems }}
+        {{ $docItems := where .Site.Pages "Type" .Site.Params.Doc.foldername }}
+        {{ if $docItems }}
         <li>
-            <a href="{{ .Site.BaseURL }}#portfolio">{{ .Site.Params.Portfolio.title }}</a>
+            <a href="{{ .Site.BaseURL }}#doc">{{ .Site.Params.Doc.title }}</a>
         </li>
         {{ end }}
         {{ $blogPosts := first 5 (where .Site.Pages "Type" .Site.Params.Blog.foldername) }}
